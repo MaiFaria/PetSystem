@@ -22,15 +22,24 @@ public static class BuilderExtensions
                                  string.Empty;
     }
 
-    public static void RegisterServices(this IServiceCollection services)
+    public static void UseApiConfiguration(this IApplicationBuilder app,
+                                           IWebHostEnvironment env)
     {
-        services.AddDbContext<PersistContext>(x =>
-            x.UseSqlServer(Configuration.Database.ConnectionString,
-            b => b.MigrationsAssembly("PetSystem.Api")));
+        app.UseSwaggerDocumentation(env);
+        app.UseStaticFiles();
+        app.UseHttpsRedirection();
+        app.UseAuthorization();
+    }
 
+    private static void RegisterServices(this IServiceCollection services)
+    {
+        services.AddControllers();
+        services.AddEndpointsApiExplorer();
         services.GlobalServices();
         services.InternalServices();
         services.MapModules();
+        services.AddDataBase();
+        services.AddSwaggerDocumentation();
     }
 
     private static void InternalServices(this IServiceCollection services)
@@ -47,5 +56,12 @@ public static class BuilderExtensions
             var iinjection = Activator.CreateInstance(item) as IInjection;
             iinjection.RegisterServices(services);
         }
+    }
+
+    private static void AddDataBase(this IServiceCollection services)
+    {
+        services.AddDbContext<PersistContext>(x =>
+            x.UseSqlServer(Configuration.Database.ConnectionString,
+            b => b.MigrationsAssembly("PetSystem.Api")));
     }
 }
