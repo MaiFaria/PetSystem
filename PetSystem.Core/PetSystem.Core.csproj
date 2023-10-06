@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Contexts\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Entities\Requests\" />
+    <Folder Include="Entities\Models\" />
+    <Folder Include="UseCases\" />
+    <Folder Include="UseCases\ServiceHandlers\" />
+    <Folder Include="UseCases\Contracts\" />
+    <Folder Include="Entities\ValueObjects\" />
+    <Folder Include="Entities\SharedContext\" />
+    <Folder Include="Validations\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\ReadOnly\" />
+    <Folder Include="Interfaces\Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="FluentValidation" Version="11.7.1" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PetSystem.Shared\PetSystem.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Interfaces\" />
+    <None Remove="Interfaces\ReadOnly\" />
+    <None Remove="Interfaces\Repositories\" />
+  </ItemGroup>
+</Project>
