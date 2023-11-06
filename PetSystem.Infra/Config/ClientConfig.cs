@@ -12,6 +12,11 @@ public class ClientConfig : IEntityTypeConfiguration<Client>
 
         builder.HasKey(e => e.Id);
 
+        builder.Property(e => e.Id)
+                .HasColumnName("Id")
+                .HasColumnType("UNIQUEIDENTIFIER")
+                .ValueGeneratedOnAdd();
+
         builder.Property(e => e.Name)
              .HasColumnName("Name")
              .HasColumnType("NVARCHAR")

@@ -21,7 +21,12 @@ public class Client : BaseEntity
     public DateTime RegistrationDate { get; set; }
 
     public async Task ValidateForPersistence()
-    {
-        ValidationResult = await new ClientValidations().ValidateAsync(this);
-    }
+        => ValidationResult = await new ClientValidations().ValidateAsync(this);
+
+    #region Update
+
+    public void UpdateName(string name)
+        => Name = name;
+
+    #endregion
 }

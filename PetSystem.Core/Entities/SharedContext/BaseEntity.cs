@@ -7,10 +7,7 @@ namespace PetSystem.Core.Entities.SharedContext;
 [NotMapped]
 public class BaseEntity
 {
-    protected BaseEntity()
-             => Id = Guid.NewGuid();
-
-    public Guid Id { get; }
+    public Guid Id { get; set; }
 
     public bool Equals(Guid id)
          => Id.Equals(id);

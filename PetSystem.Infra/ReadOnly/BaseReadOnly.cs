@@ -19,6 +19,9 @@ public class BaseReadOnly<T> : IBaseReadOnly<T> where T : class
         _mapper = mapper;
     }
 
-    public virtual async Task<T> GetById(int id)
-        => await _dbSet.FindAsync(id);
+    public virtual async Task<T> GetById(Guid id)
+    {
+        return await _dbSet.FindAsync(id);
+    }
+
 }

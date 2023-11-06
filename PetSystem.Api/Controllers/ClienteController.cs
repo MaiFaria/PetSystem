@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PetSystem.Core.Entities.Requests;
+using PetSystem.Core.Entities.Requests.ClienteRequests;
 using PetSystem.Core.UseCases.Contracts;
 
 namespace PetSystem.Api.Controllers;
@@ -16,5 +16,17 @@ public class ClientController : ControllerBase
     public async Task<ActionResult> Insert([FromBody]InsertClientRequest request)
     {
         return await _service.Insert(request);
+    }
+
+    [HttpPut]
+    public async Task<ActionResult> Update([FromBody] UpdateClientRequest request)
+    {
+        return await _service.Update(request);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult> GetById(Guid id)
+    {
+        return await _service.GetById(id);
     }
 }
