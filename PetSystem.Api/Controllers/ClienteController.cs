@@ -13,7 +13,7 @@ public class ClientController : ControllerBase
         => _service = service;
 
     [HttpPost]
-    public async Task<ActionResult> Insert([FromBody]InsertClientRequest request)
+    public async Task<ActionResult> Insert([FromBody] InsertClientRequest request)
     {
         return await _service.Insert(request);
     }
@@ -28,5 +28,11 @@ public class ClientController : ControllerBase
     public async Task<ActionResult> GetById(Guid id)
     {
         return await _service.GetById(id);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> Delete(Guid id)
+    {
+        return await _service.Delete(id);
     }
 }

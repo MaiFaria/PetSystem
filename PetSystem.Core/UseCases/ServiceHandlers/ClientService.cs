@@ -65,6 +65,19 @@ public class ClientService : IClientService
         return await ApplicationResult.ReturnOk(_readOnly.GetById(id));
     }
 
+    public async Task<ActionResult> Delete(Guid id)
+    {
+        var deleteClient = await _readOnly.GetById(id);
+
+        if (deleteClient is null)
+            return await ApplicationResult.ReturnNo(null,
+                                                    "Client not found, try again.");
+
+        await _repository.Delete(deleteClient);
+
+        return await ApplicationResult.ReturnOk(deleteClient, "Successful operation.");
+    }
+
     #region Validations
 
     private static void UpdateClientValidations(Client updateClient,
