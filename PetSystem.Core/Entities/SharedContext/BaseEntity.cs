@@ -5,7 +5,7 @@ using FluentValidation.Results;
 namespace PetSystem.Core.Entities.SharedContext;
 
 [NotMapped]
-public class BaseEntity
+public abstract class BaseEntity
 {
     public Guid Id { get; set; }
 

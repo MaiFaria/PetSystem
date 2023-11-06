@@ -23,5 +23,4 @@ public class BaseReadOnly<T> : IBaseReadOnly<T> where T : class
     {
         return await _dbSet.FindAsync(id);
     }
-
 }

@@ -6,14 +6,14 @@ namespace PetSystem.Core.Entities.Models;
 
 public class Client : BaseEntity
 {
-    protected Client() { }
-
     public Client(string name,
                   Contact contact)
     {
         Name = name;
         Contact = contact;
     }
+
+    public Client() { }
 
     public string Name { get; set; } = string.Empty;
     public Contact Contact { get; set; } = new();
